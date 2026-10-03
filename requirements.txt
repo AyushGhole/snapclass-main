@@ -1,0 +1,25 @@
+#Utilities 
+numpy  
+pandas 
+
+#Face Recognition  
+scikit-learn 
+dlib-bin 
+
+# Dlib-bion according to the python version 
+# dlib-20.0.99-cp314-cp314-win_amd64.whl 
+
+
+#Face Recognition models from github 
+git+https://github.com/ageitgey/face_recognition_models 
+setuptools<70.0.0 
+
+supabase 
+bcrypt 
+
+segno 
+pillow  
+
+streamlit 
+
+
