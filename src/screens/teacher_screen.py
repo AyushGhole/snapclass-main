@@ -20,9 +20,66 @@ def teacher_screen():
 
 def teacher_dashboard(): 
     teacher_data = st.session_state.teacher_data
-    st.header(f"""
-           Welcome! {teacher_data['name']}
-              """) 
+    c1 , c2 = st.columns(2, vertical_alignment='center', gap='xxlarge')
+    with c1: 
+       header_dashboard()
+    with c2:
+        st.subheader(f"""Welcome! {teacher_data['name']}""")  
+        if st.button("Logout", type='secondary', key='Loginbackbtn', shortcut='control+backspace'):
+              st.session_state['is_logged_in']= False 
+              del st.session_state.teacher_data
+              st.rerun()
+    st.space() 
+
+    if "current_teacher_tab" not in st.session_state: 
+        st.session_state.current_teacher_tab = 'take_attendence' 
+
+    tab1, tab2, tab3 = st.columns(3) 
+
+
+    with tab1: 
+        type1='primary' if st.session_state.current_teacher_tab == 'take_attendence' else 'tertiary'
+        if st.button('Take Attendence',  type=type1, width='stretch', icon=':material/ar_on_you:'): 
+           st.session_state.current_teacher_tab = 'take_attendence'  
+           st.rerun() 
+
+    with tab2:
+        type2= 'primary' if st.session_state.current_teacher_tab == 'manage_subjects' else 'tertiary' 
+        if st.button('Manage Subjects', width='stretch', type=type2,  icon=':material/book_ribbon:'): 
+           st.session_state.current_teacher_tab = 'manage_subjects'  
+           st.rerun() 
+
+    with tab3:    
+        type3='primary' if st.session_state.current_teacher_tab == 'attendence_records' else 'tertiary'
+        if st.button('Attendence Records',  type=type3, width='stretch', icon=':material/cards_stack:'): 
+           st.session_state.current_teacher_tab = 'attendence_records'   
+           st.rerun() 
+
+    st.divider()
+
+    if st.session_state.current_teacher_tab=='take_attendence': 
+        teacher_tab_take_attendence() 
+
+    if st.session_state.current_teacher_tab=='manage_subjects': 
+        techer_tab_manage_subjects() 
+
+    if st.session_state.current_teacher_tab=='attendence_records': 
+        teacher_tab_attendence_records() 
+
+
+    footer_dashboard()
+
+
+def teacher_tab_take_attendence(): 
+    st.header('Take AI Attendence') 
+
+
+def techer_tab_manage_subjects(): 
+    st.header('Manage AI Subjects') 
+
+
+def teacher_tab_attendence_records():
+    st.header('Attendence Records')
 
 
 
