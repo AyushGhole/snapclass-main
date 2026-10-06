@@ -52,7 +52,8 @@ def get_trained_model():
     embedding = student.get('face_embedding') 
     if embedding:  
       X.append(np.array(embedding))
-      y.append(student.append('student_id')) 
+      y.append(student['student_id'])
+ 
 
   if X == 0: 
     return 0 
@@ -60,7 +61,7 @@ def get_trained_model():
   clf = SVC(kernel='linear', probability=True, class_weight='balanced') 
 
   try: 
-    clf.fix(X, y) 
+    clf.fit(X, y) 
   except ValueError:
     pass  
 
