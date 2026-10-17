@@ -1,3 +1,5 @@
+streamlit 
+
 #Utilities 
 numpy  
 pandas 
@@ -24,6 +26,5 @@ resemblyzer
 segno 
 pillow  
 
-streamlit 
 
 
